@@ -1,0 +1,20 @@
+name: 'kicad ibom'
+description: 'Generate KiCAD Interactive HTML BOM'
+inputs:
+  pcb_file:  # id of input
+    description: 'Path to your .kicad_pcb'
+    required: true
+  output_path:
+    description: 'path to where ibom.html should be created'
+    required: true
+  ibom_args:
+    description: 'Additional generate_interactive_bom.py flags'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - bash
+    - -c 
+    - /root/.kicad_plugins/InteractiveHtmlBom/InteractiveHtmlBom/generate_interactive_bom.py --no-browser --dest-dir "$INPUT_OUTPUT_PATH" $INPUT_IBOM_ARGS "$INPUT_PCB_FILE"
+
