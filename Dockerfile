@@ -1,5 +1,5 @@
 FROM ghcr.io/linalinn/kicad:nightly
-RUN apt-get update && apt-get install git
+RUN apt-get update && apt-get install -y git
 WORKDIR /root/.kicad_plugins
 RUN git clone https://github.com/openscopeproject/InteractiveHtmlBom.git
 ENV INTERACTIVE_HTML_BOM_NO_DISPLAY=1
